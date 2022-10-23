@@ -1,0 +1,4 @@
+<template>
+    Detail countrie
+</template>
+
