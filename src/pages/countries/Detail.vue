@@ -66,7 +66,7 @@ onMounted(async () => {
 .card-content-border
     justify-content space-between
     align-items center
-    margin-top 6rem
+    margin-top 10rem
     margin-left 5rem
 
 .border
