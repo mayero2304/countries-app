@@ -4,7 +4,7 @@ import Detail from '@/pages/countries/Detail.vue';
 
 const routes = [
     { path: '/', component: Countries },
-    { path: '/detail', component: Detail },
+    { path: '/detail/:name', name: 'detail', component: Detail },
 ];
 
 const router = createRouter({
