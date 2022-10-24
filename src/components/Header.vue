@@ -4,7 +4,7 @@
             <form class="form-search">
                 <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
                 <input
-                    @focus="countrieStore.getCountries()"
+                    @focus="focus"
                     v-model="countrie"
                     type="text"
                     placeholder="Search for a country"
@@ -13,14 +13,18 @@
         </div>
 
         <div>
-            <select v-model="selected" class="select-filter">
-                <option value="">Filter by Region</option>
-                <option value="Africa">África</option>
-                <option value="Americas">América</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europa</option>
-                <option value="Oceania">Oceanía</option>
-            </select>
+            <v-select
+                style="width: 200px"
+                v-model="selected"
+                :options="[
+                    { label: 'Select by Region', code: 'select' },
+                    { label: 'África', code: 'Africa' },
+                    { label: 'Ámerica', code: 'Americas' },
+                    { label: 'Asia', code: 'Asia' },
+                    { label: 'Europa', code: 'Europe' },
+                    { label: 'Oceania', code: 'Oceania' },
+                ]"
+            ></v-select>
         </div>
     </section>
 </template>
@@ -28,11 +32,16 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue';
 import { useCountrieStore } from '../stores/countries.js';
+import 'vue-select/dist/vue-select.css';
 
 const countrie = ref('');
-const selected = ref('');
+const selected = ref('Select by Region');
 const countrieStore = useCountrieStore();
 
+const focus = () => {
+    countrieStore.getCountries();
+    selected.value = 'Select by Region';
+};
 watch(countrie, (name) => {
     if (!name) {
         countrieStore.getCountries();
@@ -46,12 +55,12 @@ watch(countrie, (name) => {
 });
 
 watch(selected, async (name) => {
-    if (name) {
+    if (name.code) {
         await countrieStore.getCountries();
     }
     countrieStore.countries = countrieStore.countries.filter((item) => {
         const nameRegionApi = item.region;
-        if (nameRegionApi.indexOf(name) != -1) {
+        if (nameRegionApi.indexOf(name.code) != -1) {
             return item;
         }
     });
