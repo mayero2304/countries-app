@@ -14,19 +14,23 @@
 import { ref } from 'vue';
 </script>
 
-<style lang="stylus" scoped>
-.dark-mode
-    background-color #ffffff;
-    opacity 1
-    transition 0.3s
-    color #000000
-    border none;
-    cursor pointer
-    outline none
-.navbar
-    background-color: #FFFFFF
-.navbar-content
-    display: flex
+<style lang="scss" scoped>
+.dark-mode {
+    background-color: #ffffff;
+    opacity: 1;
+    transition: 0.3s;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.navbar {
+    background-color: #ffffff;
+    padding: 15px 0 15px 0;
+}
+.navbar-content {
+    display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+}
 </style>

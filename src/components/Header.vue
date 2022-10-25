@@ -76,7 +76,6 @@ onMounted(async () => {
     display flex
     justify-content space-between
     align-items center
-
 .form-search
     padding: 1rem;
     background: #f1f1f1;

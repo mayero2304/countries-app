@@ -1,6 +1,6 @@
 import VSelect from 'vue-select';
 import { createApp } from 'vue';
-import './styles/index.styl';
+import './styles/styles.scss';
 import App from './App.vue';
 import { createPinia } from 'pinia';
 import axios from 'axios'
